@@ -96,8 +96,4 @@ if st.button("Predict Next Word 🚀"):
         for i, (word, prob) in enumerate(predictions, 1):
             st.write(f"**{i}. {word}** — probability: `{prob:.4f}`")
 
-# ----------------------------
-# Debug / Transparency (Optional)
-# ----------------------------
-with st.expander("🔍 Show processed input"):
-    st.write(preprocess_input(user_input))
+
