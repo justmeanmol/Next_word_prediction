@@ -5,6 +5,20 @@ import pickle
 import re
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
+st.set_page_config(page_title="My App", layout="wide")
+
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # ----------------------------
 # App Config
 # ----------------------------
@@ -13,7 +27,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🔮 Next Word Prediction (LSTM)")
+st.title("🔮 Next Word Prediction (LSTM) by Prince kumar")
 st.write("Type a sentence and let the model predict the next word.")
 
 # ----------------------------
