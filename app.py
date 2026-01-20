@@ -19,9 +19,6 @@ st.markdown(
 )
 
 
-# ----------------------------
-# App Config
-# ----------------------------
 st.set_page_config(
     page_title="Next Word Prediction",
     layout="centered"
@@ -30,9 +27,9 @@ st.set_page_config(
 st.title("🔮 Next Word Prediction (LSTM) by Prince kumar")
 st.write("Type a sentence and let the model predict the next word.")
 
-# ----------------------------
+
 # Load Model & Vocabulary
-# ----------------------------
+
 @st.cache_resource
 def load_assets():
     model = tf.keras.models.load_model("next_word_model_best.h5")
@@ -50,9 +47,9 @@ model, word2idx, idx2word = load_assets()
 
 MAX_SEQ_LEN = 20   # MUST be same as training
 
-# ----------------------------
+
 # Preprocessing
-# ----------------------------
+
 def clean_text(text):
     text = text.lower()
     text = re.sub(r"[^a-zA-Z0-9.,!? ]+", "", text)
@@ -67,9 +64,9 @@ def preprocess_input(text):
     return padded
 
 
-# ----------------------------
+
 # Prediction
-# ----------------------------
+
 def predict_next_word(text, top_k=3):
     seq = preprocess_input(text)
     preds = model.predict(seq, verbose=0)[0]
@@ -79,9 +76,9 @@ def predict_next_word(text, top_k=3):
     return results
 
 
-# ----------------------------
+
 # UI
-# ----------------------------
+
 user_input = st.text_input("✍️ Enter your text:")
 
 top_k = st.slider("Number of suggestions", 1, 5, 3)
@@ -95,5 +92,6 @@ if st.button("Predict Next Word 🚀"):
         st.subheader("📌 Predicted Next Word(s)")
         for i, (word, prob) in enumerate(predictions, 1):
             st.write(f"**{i}. {word}** — probability: `{prob:.4f}`")
+
 
 
